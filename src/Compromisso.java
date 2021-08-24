@@ -4,7 +4,7 @@ import java.util.List;
 public class Compromisso {
     String nomeCompromisso;
     String descricao;
-    int duraçao;
+    double duraçao;
     String data;
     String nomeUser;
     String local;
@@ -30,9 +30,18 @@ public class Compromisso {
                 newComp.nomeCompromisso = System.console().readLine();
                 telaConsole.println("Digite uma descrição para esse compromisso:");
                 newComp.descricao = System.console().readLine();
-                telaConsole.println("Digite um nome para esse compromisso:");
-                newComp.duraçao = Integer.parseInt(System.console().readLine());
+                telaConsole.println("Digite uma duração para esse compromisso em minutos:");
+                newComp.duraçao = Double.parseDouble(System.console().readLine());
+                telaConsole.println("Digite uma data para esse compromisso, ex. DD/MM:");
+                newComp.data = System.console().readLine();
+                telaConsole.println("Digite o seu nome:");
+                newComp.nomeUser= System.console().readLine();
+                telaConsole.println("Digite o local:");
+                newComp.local= System.console().readLine();
 
+                compromissos.add(newComp);
+                telaConsole.println("Compromisso Cadastrado com Sucesso! ");
+                correto = false;
             } catch (Exception ex) {
                 telaConsole.println("Digite um valor válido! ");
             }
