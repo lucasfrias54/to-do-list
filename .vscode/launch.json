@@ -6,17 +6,26 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "to-do-list_d9414df5",
+            "console": "externalTerminal"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}",
-            "console":"externalTerminal"
+            "console": "externalTerminal"
         },
         {
             "type": "java",
             "name": "Launch App",
             "request": "launch",
             "mainClass": "App",
-            "projectName": "to do list_ec27fba4"
+            "projectName": "to do list_ec27fba4",
+            "console": "externalTerminal"
         }
     ]
 }
