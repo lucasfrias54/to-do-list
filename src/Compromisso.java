@@ -8,6 +8,7 @@ public class Compromisso {
     String data;
     String nomeUser;
     String local;
+    int id;
 
     public void returnMenu(PrintStream telaConsole) {
 
@@ -20,11 +21,11 @@ public class Compromisso {
         return;
     }
 
-    public void insertCompromisso(PrintStream telaConsole, List<Compromisso> compromissos) {
+    public void insertCompromisso(PrintStream telaConsole, List<Compromisso> compromissos, int count) {
         var correto = true;
         var newComp = new Compromisso();
 
-        while (correto) { 
+        while (correto) {
             try {
                 telaConsole.println("Digite um nome para esse compromisso:");
                 newComp.nomeCompromisso = System.console().readLine();
@@ -35,9 +36,10 @@ public class Compromisso {
                 telaConsole.println("Digite uma data para esse compromisso, ex. DD/MM:");
                 newComp.data = System.console().readLine();
                 telaConsole.println("Digite o seu nome:");
-                newComp.nomeUser= System.console().readLine();
+                newComp.nomeUser = System.console().readLine();
                 telaConsole.println("Digite o local:");
-                newComp.local= System.console().readLine();
+                newComp.local = System.console().readLine();
+                newComp.id = count;
 
                 compromissos.add(newComp);
                 telaConsole.println("Compromisso Cadastrado com Sucesso! ");
@@ -50,14 +52,36 @@ public class Compromisso {
     }
 
     public void listCompromisso(PrintStream telaConsole, List<Compromisso> compromissos) {
-
+        for (Compromisso compromisso : compromissos) {
+            telaConsole.println("\nID: " + compromisso.id + "\n" + compromisso.data + " " + compromisso.nomeCompromisso + "\nLocal: " + compromisso.local
+                    + "\nDuração: " + compromisso.duraçao + " minutos");
+            telaConsole.println("Usuário: " + compromisso.nomeUser + "\nDescrição: " + compromisso.descricao + "\n");
+        }
+        System.console().readLine();
     }
 
     public void editCompromisso(PrintStream telaConsole, List<Compromisso> compromissos) {
+        int idEditar;
+        telaConsole.println("Digite o ID do compromisso que deseja editar: ");
+        idEditar = Integer.parseInt(System.console().readLine());
+        for (Compromisso compromisso : compromissos) {
+            if(idEditar == compromisso.id){
 
+                break;
+            }
+        }
     }
 
     public void deleteCompromisso(PrintStream telaConsole, List<Compromisso> compromissos) {
+        int idDelete;
+        telaConsole.println("Digite o ID do compromisso que deseja remover: ");
+        idDelete = Integer.parseInt(System.console().readLine());
+        for (Compromisso compromisso : compromissos) {
+            if(idDelete == compromisso.id){
+                compromissos.remove(compromisso);
+                break;
+            }
+        }
 
     }
 

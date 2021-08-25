@@ -6,6 +6,7 @@ public class App {
         var telaConsole = System.out;
         var opcao = 0;
         var using = true;
+        int count =0;
         List<Compromisso> compromissos = new ArrayList<Compromisso>();
 
         while (using) { 	
@@ -22,7 +23,8 @@ public class App {
 
             switch (opcao) {
                 case 1:
-                    new Compromisso().insertCompromisso(telaConsole, compromissos);
+                    count++;
+                    new Compromisso().insertCompromisso(telaConsole, compromissos, count);
                     break;
 
                 case 2:
