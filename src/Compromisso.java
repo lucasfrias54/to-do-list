@@ -53,21 +53,70 @@ public class Compromisso {
 
     public void listCompromisso(PrintStream telaConsole, List<Compromisso> compromissos) {
         for (Compromisso compromisso : compromissos) {
-            telaConsole.println("\nID: " + compromisso.id + "\n" + compromisso.data + " " + compromisso.nomeCompromisso + "\nLocal: " + compromisso.local
-                    + "\nDuração: " + compromisso.duraçao + " minutos");
+            telaConsole.println("\nID: " + compromisso.id + "\n" + compromisso.data + " " + compromisso.nomeCompromisso
+                    + "\nLocal: " + compromisso.local + "\nDuração: " + compromisso.duraçao + " minutos");
             telaConsole.println("Usuário: " + compromisso.nomeUser + "\nDescrição: " + compromisso.descricao + "\n");
         }
         System.console().readLine();
     }
 
+    public String menuEdit() {
+        return "|---------------------------------------------------|\n"
+                + "|Selecione o que deseja editar:                     |\n"
+                + "|Para Terminar a edição aperte qualquer outra tecla |\n"
+                + "|                                                   |\n"
+                + "|1 - Descrição                                      |\n"
+                + "|2 - Duração                                        |\n"
+                + "|3 - Data                                           |\n"
+                + "|4 - Local                                          |\n"
+                + "|5 - Nome do Compromisso                            |\n"
+                + "|                                                   |\n"
+                + "|---------------------------------------------------|\n";
+    }
+
     public void editCompromisso(PrintStream telaConsole, List<Compromisso> compromissos) {
         int idEditar;
+        var opcEdit = "";
+        var editando = true;
         telaConsole.println("Digite o ID do compromisso que deseja editar: ");
         idEditar = Integer.parseInt(System.console().readLine());
         for (Compromisso compromisso : compromissos) {
-            if(idEditar == compromisso.id){
+            if (idEditar == compromisso.id) {
+                while (editando) {
+                    menuEdit();
+                    opcEdit = System.console().readLine();
+                    switch (opcEdit) {
+                        case "1":
+                            telaConsole.println("Digite o novo valor da descrição : ");
+                            compromisso.descricao = System.console().readLine();
+                            break;
+                        case "2":
+                            try {
+                                telaConsole.println("Digite o novo valor da duração: ");
+                                compromisso.duraçao = Double.parseDouble(System.console().readLine());
+                            } catch (Exception e) {
+                                telaConsole.println("Digite um valor válido!!");
+                            }
+                            break;
+                        case "3":
+                            telaConsole.println("Digite o novo valor da data: ");
+                            compromisso.data = System.console().readLine();
+                            break;
+                        case "4":
+                            telaConsole.println("Digite o novo valor do local: ");
+                            compromisso.local = System.console().readLine();
+                            break;
+                        case "5":
+                            telaConsole.println("Digite o novo valor do nome do compromisso: ");
+                            compromisso.nomeCompromisso = System.console().readLine();
+                            break;
 
-                break;
+                        default:
+                            editando = false;
+                            return;
+                    }
+                }
+                return;
             }
         }
     }
@@ -77,7 +126,7 @@ public class Compromisso {
         telaConsole.println("Digite o ID do compromisso que deseja remover: ");
         idDelete = Integer.parseInt(System.console().readLine());
         for (Compromisso compromisso : compromissos) {
-            if(idDelete == compromisso.id){
+            if (idDelete == compromisso.id) {
                 compromissos.remove(compromisso);
                 break;
             }
