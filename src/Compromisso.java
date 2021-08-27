@@ -83,7 +83,7 @@ public class Compromisso {
         for (Compromisso compromisso : compromissos) {
             if (idEditar == compromisso.id) {
                 while (editando) {
-                    menuEdit();
+                    telaConsole.println(menuEdit());
                     opcEdit = System.console().readLine();
                     switch (opcEdit) {
                         case "1":
